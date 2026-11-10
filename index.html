@@ -1,11 +1,12 @@
-<!DOCTYE HTML>
 
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Laboratório de Gestão Hospitalar</title>
 <style>
+* { box-sizing: border-box; }
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -29,63 +30,216 @@ section {
   margin-bottom: 20px;
   border-radius: 10px;
 }
-h2 {
-  color: #1765a0;
-}
+h2 { color: #1765a0; }
 footer {
   background: #123c65;
   color: white;
   text-align: center;
   padding: 20px;
 }
+#inicio, #incidente, #encerramento {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 25px;
+}
+#inicio { background: #123c65; color: white; }
+#incidente {
+  display: none;
+  background: #8b0000;
+  color: white;
+}
+#encerramento {
+  display: none;
+  background: #123c65;
+  color: white;
+}
+button {
+  background: #16834a;
+  color: white;
+  border: 0;
+  border-radius: 8px;
+  padding: 17px 30px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.codigo {
+  font-size: 22px;
+  font-weight: bold;
+}
+#conteudo { display: none; }
 </style>
 </head>
 <body>
-<header>
-<h1>Laboratório de Gestão Hospitalar</h1>
-<p>Disciplina de Saúde Digital e Telessaúde</p>
-</header>
-<main>
-<section>
-<h2>Bem-vindo ao Laboratório</h2>
-<p>Espaço acadêmico dedicado à tecnologia, inovação e gestão hospitalar.</p>
-</section>
-<section>
-<h2>Atividade Prática</h2>
-<h3>Laboratório de Infraestrutura e Cibersegurança</h3>
-<p>Dimensionamento de Central de Telessaúde e Plano de Continuidade de Negócios.</p>
-</section>
-<section>
-<h2>Objetivos da Aprendizagem</h2>
-<ul>
-<li>Dimensionar infraestrutura tecnológica para telessaúde.</li>
-<li>Identificar requisitos de cibersegurança e LGPD.</li>
-<li>Desenvolver um Plano de Continuidade de Negócios.</li>
-</ul>
-</section>
-<section>
-<h2>Estudo de Caso</h2>
-<p>Central de Telessaúde Regional Bacia Amazônica.</p>
-<ul>
-<li>50 teleconsultas simultâneas.</li>
-<li>Telediagnóstico e transmissão de exames.</li>
-<li>Teleinterconsulta e suporte às unidades de saúde.</li>
-<li>Integração de imagens médicas e prontuário eletrônico.</li>
-</ul>
-</section>
-<section>
-<h2>Segurança e Continuidade</h2>
-<ul>
-<li>Proteção de dados conforme a LGPD.</li>
-<li>Autenticação multifator.</li>
-<li>Backups seguros.</li>
-<li>Redundância de internet e energia elétrica.</li>
-</ul>
-</section>
-</main>
-<footer>
-<p>Laboratório de Gestão Hospitalar</p>
-<p>Saúde Digital e Telessaúde</p>
-</footer>
+
+<div id="inicio">
+  <h1>LABORATÓRIO DE GESTÃO HOSPITALAR</h1>
+  <h2 style="color:white">INICIE A ATIVIDADE</h2>
+  <button onclick="iniciarAtividade()">INICIAR</button>
+</div>
+
+<div id="conteudo">
+  <header>
+    <h1>Laboratório de Gestão Hospitalar</h1>
+    <p>Disciplina de Saúde Digital e Telessaúde</p>
+  </header>
+
+  <main>
+    <section>
+      <h2>Bem-vindo ao Laboratório</h2>
+      <p>Espaço acadêmico dedicado à tecnologia, inovação e gestão hospitalar.</p>
+    </section>
+
+    <section>
+      <h2>Atividade Prática</h2>
+      <h3>Laboratório de Infraestrutura e Cibersegurança</h3>
+      <p>Dimensionamento de Central de Telessaúde e Plano de Continuidade de Negócios.</p>
+    </section>
+
+    <section>
+      <h2>Objetivos da Aprendizagem</h2>
+      <ul>
+        <li>Dimensionar infraestrutura tecnológica para telessaúde.</li>
+        <li>Identificar requisitos de cibersegurança e LGPD.</li>
+        <li>Desenvolver um Plano de Continuidade de Negócios.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Estudo de Caso</h2>
+      <p>Central de Telessaúde Regional Bacia Amazônica.</p>
+      <ul>
+        <li>50 teleconsultas simultâneas.</li>
+        <li>Telediagnóstico e transmissão de exames.</li>
+        <li>Teleinterconsulta e suporte às unidades de saúde.</li>
+        <li>Integração de imagens médicas e prontuário eletrônico.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Segurança e Continuidade</h2>
+      <ul>
+        <li>Proteção de dados conforme a LGPD.</li>
+        <li>Autenticação multifator.</li>
+        <li>Backups seguros.</li>
+        <li>Redundância de internet e energia elétrica.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>Laboratório de Gestão Hospitalar</p>
+    <p>Saúde Digital e Telessaúde</p>
+  </footer>
+</div>
+
+<div id="incidente">
+  <h1>ALERTA DE INCIDENTE</h1>
+  <h2 id="tituloIncidente" style="color:white"></h2>
+  <p class="codigo" id="codigoIncidente"></p>
+  <p id="mensagemIncidente"></p>
+  <p>AGUARDE A NORMALIZAÇÃO DO SISTEMA</p>
+</div>
+
+<div id="encerramento">
+  <h1>TEMPO ESGOTADO!</h1>
+  <h2 style="color:white">ATIVIDADE ENCERRADA</h2>
+</div>
+
+<script>
+const incidentes = [
+  {
+    tempo: 120,
+    titulo: "FALHA NO FORNECIMENTO DE ENERGIA",
+    codigo: "ERR-001",
+    mensagem: "O fornecimento de energia elétrica foi interrompido na Central de Telessaúde."
+  },
+  {
+    tempo: 300,
+    titulo: "PERDA DE CONEXÃO COM A INTERNET",
+    codigo: "ERR-002",
+    mensagem: "A conexão com a internet foi interrompida. Os serviços de telessaúde estão indisponíveis."
+  },
+  {
+    tempo: 480,
+    titulo: "SISTEMA DE GESTÃO HOSPITALAR INDISPONÍVEL",
+    codigo: "ERR-003",
+    mensagem: "Não foi possível acessar os prontuários eletrônicos e os registros dos pacientes."
+  },
+  {
+    tempo: 660,
+    titulo: "AMEAÇA DE RANSOMWARE DETECTADA",
+    codigo: "ERR-004",
+    mensagem: "Um ataque cibernético foi identificado. Arquivos do sistema apresentam sinais de criptografia."
+  },
+  {
+    tempo: 840,
+    titulo: "FALHA NA REDE INTERNA",
+    codigo: "ERR-005",
+    mensagem: "A rede interna da unidade hospitalar está indisponível."
+  }
+];
+
+let inicio = null;
+let intervalo = null;
+let incidenteAtual = -1;
+
+function iniciarAtividade() {
+  document.getElementById("inicio").style.display = "none";
+  document.getElementById("conteudo").style.display = "block";
+
+  inicio = Date.now();
+  intervalo = setInterval(atualizarAtividade, 200);
+}
+
+function atualizarAtividade() {
+  const decorrido = (Date.now() - inicio) / 1000;
+
+  if (decorrido >= 900) {
+    clearInterval(intervalo);
+    document.getElementById("conteudo").style.display = "none";
+    document.getElementById("incidente").style.display = "none";
+    document.getElementById("encerramento").style.display = "flex";
+    return;
+  }
+
+  let novoIncidente = -1;
+
+  incidentes.forEach((incidente, indice) => {
+    if (
+      decorrido >= incidente.tempo &&
+      decorrido < incidente.tempo + 60
+    ) {
+      novoIncidente = indice;
+    }
+  });
+
+  if (novoIncidente !== -1) {
+    if (incidenteAtual !== novoIncidente) {
+      incidenteAtual = novoIncidente;
+      mostrarIncidente(incidenteAtual);
+    }
+  } else {
+    incidenteAtual = -1;
+    document.getElementById("incidente").style.display = "none";
+    document.getElementById("conteudo").style.display = "block";
+  }
+}
+
+function mostrarIncidente(indice) {
+  const incidente = incidentes[indice];
+
+  document.getElementById("conteudo").style.display = "none";
+  document.getElementById("incidente").style.display = "flex";
+  document.getElementById("tituloIncidente").textContent = incidente.titulo;
+  document.getElementById("codigoIncidente").textContent = incidente.codigo;
+  document.getElementById("mensagemIncidente").textContent = incidente.mensagem;
+}
+</script>
+
 </body>
 </html>
